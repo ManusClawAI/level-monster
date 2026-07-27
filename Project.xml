@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="Level Monster" package="com.levelmonster.game" version="2.0.0" company="Interstellar Coders" />
+    <app main="Main" file="LevelMonster" path="export" />
+
+    <window width="854" height="480" fps="60" background="#000000" orientation="landscape" resizable="true" if="html5" />
+    <window width="0" height="0" fps="60" background="#000000" orientation="landscape" fullscreen="true" if="android" />
+    <window fps="60" background="#000000" orientation="landscape" resizable="true" if="desktop" />
+    <window vsync="true" antialiasing="4" />
+
+    <set name="BUILD_DIR" value="build" />
+
+    <!-- Android: min SDK 21 (atomic stubs in libc from API 21+) -->
+    <android min-sdk-version="21" target-sdk-version="34" if="android" />
+
+    <!-- UNIVERSAL APK: both arm64 (64-bit) and armv7 (32-bit) -->
+    <architecture name="arm64" if="android" />
+    <architecture name="armv7" if="android" />
+
+    <!-- Link libatomic statically so __atomic_compare_exchange_4 resolves on 32-bit ARM -->
+    <config:android linker-flags="-latomic" if="android" />
+    <setenv name="HXCPP_LINKER_FLAGS" value="-latomic" if="android" />
+
+    <source path="Source" />
+
+    <haxelib name="openfl" />
+    <haxelib name="lime" />
+    <haxelib name="actuate" />
+
+    <haxeflag name="--dce" value="full" />
+
+    <!-- Assets bundled into APK -->
+    <assets path="Assets/assets" rename="assets" include="*" />
+
+    <icon path="android/res/drawable/ic_launcher.png" />
+
+    <config:android permission="android.permission.VIBRATE" />
+    <config:android permission="android.permission.WAKE_LOCK" />
+
+    <template path="android" if="android" />
+</project>

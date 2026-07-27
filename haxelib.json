@@ -1,0 +1,15 @@
+{
+  "name": "level-monster",
+  "url": "https://github.com/interstellarcoders/level-monster",
+  "license": "MIT",
+  "tags": ["game", "android", "openfl", "lime", "platformer", "native"],
+  "description": "Native Android rebuild of the Level Devil HTML5 game",
+  "version": "1.0.0",
+  "releasenote": "Initial release",
+  "contributors": ["interstellarcoders"],
+  "dependencies": {
+    "openfl": "",
+    "lime": "",
+    "actuate": ""
+  }
+}
