@@ -19,7 +19,7 @@ class MainMenu extends UIScreen {
         super();
         drawGradientBackground(0x0A0A2A, 0x000000);
 
-        var sw = Engine.instance.screenWidth;
+        var sw = (Engine.instance != null && Engine.instance.screenWidth > 10) ? Engine.instance.screenWidth : 854;
         var centerX = sw / 2;
 
         titleLine1 = createTextField(0, 80, sw, "LEVEL", 72, 0xFF813F);

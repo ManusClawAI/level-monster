@@ -14,9 +14,13 @@ class UIScreen extends Sprite {
     public function update(dt:Float):Void {}
 
     public function drawBackground(color:Int = 0x000000, alpha:Float = 1.0):Void {
+        var sw = Engine.instance != null ? Engine.instance.screenWidth : 854;
+        var sh = Engine.instance != null ? Engine.instance.screenHeight : 480;
+        if (sw < 10) sw = 854;
+        if (sh < 10) sh = 480;
         var bg = new Shape();
         bg.graphics.beginFill(color, alpha);
-        bg.graphics.drawRect(0, 0, Engine.instance.screenWidth, Engine.instance.screenHeight);
+        bg.graphics.drawRect(0, 0, sw, sh);
         bg.graphics.endFill();
         addChild(bg);
     }
@@ -31,7 +35,7 @@ class UIScreen extends Sprite {
         var tf = new TextField();
         tf.x = x;
         tf.y = y;
-        tf.width = width;
+        tf.width = width > 0 ? width : 200;
         tf.height = size + 10;
         var fmt = new TextFormat(null, size, color, false, false, false, null, null, center ? TextFormatAlign.CENTER : TextFormatAlign.LEFT);
         tf.defaultTextFormat = fmt;

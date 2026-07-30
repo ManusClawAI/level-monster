@@ -70,10 +70,12 @@ class Engine {
     }
 
     private function refreshScreenSize():Void {
-        var w = stage.stageWidth;
-        var h = stage.stageHeight;
-        if (w > 10) screenWidth = w;
-        if (h > 10) screenHeight = h;
+        try {
+            var w = stage.stageWidth;
+            var h = stage.stageHeight;
+            if (w > 10) screenWidth = w;
+            if (h > 10) screenHeight = h;
+        } catch (e:Dynamic) {}
     }
 
     private function setupInput():Void {
